@@ -17,7 +17,7 @@ mkdir -p "$BACKUP_DIR"
 
 # do tmux
 echo "==> Create .tmux.conf symlink"
-[ -e "$TMUX_TPM" ] && git clone https://github.com/tmux-plugins/tpm "$TMUX_TPM"
+[ ! -e "$TMUX_TPM" ] && git clone https://github.com/tmux-plugins/tpm "$TMUX_TPM"
 ln -sf "$DOTFILES_DIR/tmux/tmux-main.conf" "$TMUX_CONF"
 
 # do neovim
