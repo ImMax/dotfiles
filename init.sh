@@ -10,10 +10,9 @@ GIT_CONFIG="$HOME/.gitconfig"
 
 # do backup
 echo "==> Backing up existing dotfiles to $BACKUP_DIR"
-
 mkdir -p "$BACKUP_DIR"
-cp -r "$NVIM_CONF" "$BACKUP_DIR"
-cp "$TMUX_CONF" "$BACKUP_DIR"
+[ -e "$NVIM_CONF" ] && cp -r "$NVIM_CONF" "$BACKUP_DIR"
+[ -e "$TMUX_CONF" ] && cp "$TMUX_CONF" "$BACKUP_DIR"
 
 # do tmux
 echo "==> Create .tmux.conf symlink"
