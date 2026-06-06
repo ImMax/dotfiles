@@ -1,0 +1,38 @@
+[grep]
+	lineNumber = true
+[core]
+	editor = nvim
+[alias]
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	root = !pwd
+
+[alias]
+	login = "!f() { \
+		id=$1; \
+		if [ -z "$id" ] || [ "$id" == "ls" ]; then \
+			echo \"List of IDs:\n\"; \
+			find ~/ -maxdepth 1 -mindepth 1 -name \".*.git_id\" -exec echo -n \"> \" \\; -exec sh -c \"echo \"{}\" | cut -d \".\" -f 2 \" \\; -exec cat \"{}\" \\; -exec echo \\; ; \
+			exit 0; \
+		fi; \
+		id_file=$(find ~/ -maxdepth 1 -mindepth 1 -name ".$id.git_id"); \
+		if [ -z "$id_file" ]; then \
+			echo "Missing id file for: $id"; \
+			echo "Please list all available IDs with:"; \
+			printf \"  %s\n\" \"git login ls\"; \
+			exit 1; \
+		fi; \
+		echo "Set username and email for this repo:"; \
+		git config --local user.name \"$(head -1 $id_file)\"; \
+		git config --local user.email $(tail -1 $id_file); \
+		git config user.name; \
+		git config user.email; \
+	}; f"
+[diff]
+	tool = vimdiff
+[log]
+	date = iso
+[merge]
+	tool = meld
