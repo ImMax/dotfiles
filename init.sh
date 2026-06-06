@@ -18,12 +18,12 @@ mkdir -p "$BACKUP_DIR"
 # do tmux
 echo "==> Create .tmux.conf symlink"
 [ -e "$TMUX_TPM" ] && git clone https://github.com/tmux-plugins/tpm "$TMUX_TPM"
-ln -s "$DOTFILES_DIR/tmux/tmux-main.conf" "$TMUX_CONF" 
+ln -sf "$DOTFILES_DIR/tmux/tmux-main.conf" "$TMUX_CONF"
 
 # do neovim
 echo "==> Create nvim symlink"
-ln -s "$DOTFILES_DIR/nvim/nvim-main" "$HOME/$NVIM_INIT"
+ln -sf "$DOTFILES_DIR/nvim/nvim-main" "$HOME/$NVIM_INIT"
 
 # do git
 echo "==> Create .gitconfig symlink"
-ln -s "$DOTFILES_DIR/git/gitconfig" "$GIT_CONFIG"
+ln -sf "$DOTFILES_DIR/git/gitconfig" "$GIT_CONFIG"
