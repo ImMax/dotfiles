@@ -2,13 +2,18 @@
 	lineNumber = true
 [core]
 	editor = nvim
+	hooksPath = ~/.githooks
+[sendemail "bpf"]
+	# git send-email --identity=bpf *.patch
+	to = Alexei Starovoitov <ast@kernel.org>, Andrii Nakryiko <andrii@kernel.org>, Daniel Borkmann <daniel@iogearbox.net>
+	cc = bpf@vger.kernel.org, Ilya Leoshkevich <iii@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>, Alexander Gordeev <agordeev@linux.ibm.com>
+	annotate = yes
 [alias]
 	co = checkout
 	br = branch
 	ci = commit
 	st = status
 	root = !pwd
-
 [alias]
 	login = "!f() { \
 		id=$1; \
